@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const HeroSection = () => {
+  const [mounted, setMounted] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [particles, setParticles] = useState<Array<{
     id: number;
@@ -15,14 +16,22 @@ const HeroSection = () => {
   }>>([]);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+    
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+  }, [mounted]);
 
   useEffect(() => {
+    if (!mounted) return;
+    
     // Generate particles only on client side to avoid hydration mismatch
     const generatedParticles = Array.from({ length: 50 }, (_, i) => ({
       id: i,
@@ -33,7 +42,7 @@ const HeroSection = () => {
       duration: Math.random() * 20 + 10,
     }));
     setParticles(generatedParticles);
-  }, []);
+  }, [mounted]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -91,7 +100,7 @@ const HeroSection = () => {
         />
 
         {/* Enhanced Animated Particles with different sizes */}
-        {particles.map((particle) => (
+        {mounted && particles.map((particle) => (
           <motion.div
             key={particle.id}
             className={`absolute bg-primary rounded-full ${
@@ -118,22 +127,26 @@ const HeroSection = () => {
         ))}
 
         {/* Multiple Mouse Follow Effects */}
-        <motion.div
-          className="absolute w-96 h-96 bg-primary/10 rounded-full blur-3xl"
-          animate={{
-            x: mousePosition.x - 192,
-            y: mousePosition.y - 192,
-          }}
-          transition={{ type: "spring", damping: 30 }}
-        />
-        <motion.div
-          className="absolute w-64 h-64 bg-accent/15 rounded-full blur-2xl"
-          animate={{
-            x: mousePosition.x - 128,
-            y: mousePosition.y - 128,
-          }}
-          transition={{ type: "spring", damping: 40, delay: 0.1 }}
-        />
+        {mounted && (
+          <>
+            <motion.div
+              className="absolute w-96 h-96 bg-primary/10 rounded-full blur-3xl"
+              animate={{
+                x: mousePosition.x - 192,
+                y: mousePosition.y - 192,
+              }}
+              transition={{ type: "spring", damping: 30 }}
+            />
+            <motion.div
+              className="absolute w-64 h-64 bg-accent/15 rounded-full blur-2xl"
+              animate={{
+                x: mousePosition.x - 128,
+                y: mousePosition.y - 128,
+              }}
+              transition={{ type: "spring", damping: 40, delay: 0.1 }}
+            />
+          </>
+        )}
 
         {/* Orbital rings */}
         <motion.div

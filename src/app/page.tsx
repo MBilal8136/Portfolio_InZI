@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
@@ -23,11 +24,25 @@ export default function Portfolio() {
       <ContactSection />
       
       {/* Footer */}
-      <footer className="bg-secondary py-8 border-t border-border">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-muted-foreground">
-            © 2024 Inzamam Sandhu. All rights reserved.
-          </p>
+      <footer className="bg-secondary py-5 border-t border-border">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-6 md:space-y-0">
+            {/* Logo */}
+            <div className="flex items-center">
+              <Image 
+                src="/Inzi_Sandhu.svg" 
+                alt="Inzamam Sandhu Logo" 
+                width={120}
+                height={48}
+                className="h-12 w-auto"
+              />
+            </div>
+            
+            {/* Copyright */}
+            <p className="text-muted-foreground text-center">
+              © 2025 Inzamam Sandhu. All rights reserved.
+            </p>
+          </div>
         </div>
       </footer>
     </div>

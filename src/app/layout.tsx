@@ -17,6 +17,11 @@ export const metadata: Metadata = {
   description: "Portfolio of Inzamam Sandhu, a creative professional skilled in Graphic Designing, Digital Marketing, SEO Optimization, and Web Development.",
   keywords: "Graphic Design, Digital Marketing, SEO, Web Development, Portfolio, Inzamam Sandhu",
   authors: [{ name: "Inzamam Sandhu" }],
+  icons: {
+    icon: "/inzi.ico",
+    shortcut: "/inzi.ico",
+    apple: "/inzi.ico",
+  },
 };
 
 export const viewport = {
@@ -30,9 +35,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning={true}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        suppressHydrationWarning={true}
       >
         {children}
       </body>
