@@ -73,7 +73,7 @@ const ContactSection = () => {
 
       await emailjs.send(serviceId, templateId, templateParams, publicKey);
       
-      setSubmitMessage('Thank you for your message! I&apos;ll get back to you soon.');
+      setSubmitMessage("Thank you for your message! I'll get back to you soon.");
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
       console.error('Email sending failed:', error);
