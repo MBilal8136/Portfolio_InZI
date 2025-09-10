@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const TestimonialsSection = () => {
   const [mounted, setMounted] = useState(false);
@@ -9,31 +9,35 @@ const TestimonialsSection = () => {
 
   const testimonials = [
     {
-      name: 'Sarah Johnson',
-      position: 'CEO, TechStart Inc.',
-      content: 'Inzamam delivered an exceptional brand identity that perfectly captured our vision. His attention to detail and creative approach exceeded our expectations.',
-      avatar: '👩‍💼',
+      name: "Sarah Johnson",
+      position: "CEO, TechStart Inc.",
+      content:
+        "Inzamam delivered an exceptional brand identity that perfectly captured our vision. His attention to detail and creative approach exceeded our expectations.",
+      avatar: "👩‍💼",
       rating: 5,
     },
     {
-      name: 'Michael Chen',
-      position: 'Marketing Director, Growth Co.',
-      content: 'The digital marketing campaign designed by Inzamam increased our online engagement by 250%. His strategic approach is truly remarkable.',
-      avatar: '👨‍💼',
+      name: "Michael Chen",
+      position: "Marketing Director, Growth Co.",
+      content:
+        "The digital marketing campaign designed by Inzamam increased our online engagement by 250%. His strategic approach is truly remarkable.",
+      avatar: "👨‍💼",
       rating: 5,
     },
     {
-      name: 'Emily Davis',
-      position: 'Founder, E-Shop Plus',
-      content: 'Our website redesign not only looks amazing but also improved our SEO rankings significantly. Inzamam is a true professional.',
-      avatar: '👩‍💻',
+      name: "Emily Davis",
+      position: "Founder, E-Shop Plus",
+      content:
+        "Our website redesign not only looks amazing but also improved our SEO rankings significantly. Inzamam is a true professional.",
+      avatar: "👩‍💻",
       rating: 5,
     },
     {
-      name: 'David Rodriguez',
-      position: 'Owner, Local Business',
-      content: 'The SEO optimization work helped us rank #1 for our main keywords. Our organic traffic has tripled since working with Inzamam.',
-      avatar: '👨‍🔧',
+      name: "David Rodriguez",
+      position: "Owner, Local Business",
+      content:
+        "The SEO optimization work helped us rank #1 for our main keywords. Our organic traffic has tripled since working with Inzamam.",
+      avatar: "👨‍🔧",
       rating: 5,
     },
   ];
@@ -44,7 +48,7 @@ const TestimonialsSection = () => {
 
   useEffect(() => {
     if (!mounted) return;
-    
+
     const timer = setInterval(() => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
     }, 5000);
@@ -53,7 +57,9 @@ const TestimonialsSection = () => {
 
   const renderStars = (rating: number) => {
     return [...Array(rating)].map((_, i) => (
-      <span key={i} className="text-yellow-400 text-lg">★</span>
+      <span key={i} className="text-yellow-400 text-lg">
+        ★
+      </span>
     ));
   };
 
@@ -71,7 +77,8 @@ const TestimonialsSection = () => {
             What Clients <span className="text-primary">Say</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Don&apos;t just take my word for it - hear from satisfied clients who have experienced success
+            Don&apos;t just take my word for it - hear from satisfied clients
+            who have experienced success
           </p>
         </motion.div>
 
@@ -90,15 +97,15 @@ const TestimonialsSection = () => {
                   <div className="text-6xl mb-6">
                     {testimonials[currentTestimonial].avatar}
                   </div>
-                  
+
                   <div className="flex justify-center mb-4">
                     {renderStars(testimonials[currentTestimonial].rating)}
                   </div>
-                  
+
                   <blockquote className="text-lg md:text-xl text-muted-foreground mb-6 italic leading-relaxed">
-                    "{testimonials[currentTestimonial].content}"
+                    &ldquo;{testimonials[currentTestimonial].content}&rdquo;
                   </blockquote>
-                  
+
                   <div>
                     <h4 className="text-xl font-semibold mb-1">
                       {testimonials[currentTestimonial].name}
@@ -119,9 +126,9 @@ const TestimonialsSection = () => {
                 key={index}
                 onClick={() => setCurrentTestimonial(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentTestimonial 
-                    ? 'bg-primary scale-125' 
-                    : 'bg-muted hover:bg-muted-foreground'
+                  index === currentTestimonial
+                    ? "bg-primary scale-125"
+                    : "bg-muted hover:bg-muted-foreground"
                 }`}
               />
             ))}
@@ -132,26 +139,50 @@ const TestimonialsSection = () => {
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              onClick={() => setCurrentTestimonial((prev) => 
-                prev === 0 ? testimonials.length - 1 : prev - 1
-              )}
+              onClick={() =>
+                setCurrentTestimonial((prev) =>
+                  prev === 0 ? testimonials.length - 1 : prev - 1
+                )
+              }
               className="bg-card border border-border hover:border-primary/50 p-3 rounded-full transition-all duration-300"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
               </svg>
             </motion.button>
-            
+
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              onClick={() => setCurrentTestimonial((prev) => 
-                (prev + 1) % testimonials.length
-              )}
+              onClick={() =>
+                setCurrentTestimonial(
+                  (prev) => (prev + 1) % testimonials.length
+                )
+              }
               className="bg-card border border-border hover:border-primary/50 p-3 rounded-full transition-all duration-300"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
               </svg>
             </motion.button>
           </div>
