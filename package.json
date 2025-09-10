@@ -6,7 +6,10 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start -p 3006",
-    "lint": "eslint"
+    "lint": "eslint",
+    "export": "next build",
+    "deploy": "npm run build && echo 'Build complete! Upload out/ folder to Hostinger'",
+    "deploy:local": "chmod +x scripts/deploy.sh && ./scripts/deploy.sh"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
