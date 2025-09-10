@@ -1,45 +1,52 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
 
 const ProjectsSection = () => {
   const projects = [
     {
-      title: 'E-commerce Website',
-      description: 'Modern e-commerce platform with advanced features',
-      image: '/placeholder-project.jpg',
-      tags: ['Web Development', 'UI/UX'],
+      title: "E-commerce Website",
+      description: "Modern e-commerce platform with advanced features",
+      image:
+        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop&crop=center",
+      tags: ["Web Development", "UI/UX"],
     },
     {
-      title: 'Brand Identity Design',
-      description: 'Complete brand identity for a tech startup',
-      image: '/placeholder-project.jpg',
-      tags: ['Graphic Design', 'Branding'],
+      title: "Brand Identity Design",
+      description: "Complete brand identity for a tech startup",
+      image:
+        "https://images.unsplash.com/photo-1586717799252-bd134ad00e26?w=400&h=300&fit=crop&crop=center",
+      tags: ["Graphic Design", "Branding"],
     },
     {
-      title: 'SEO Campaign',
-      description: 'Comprehensive SEO strategy that increased traffic by 300%',
-      image: '/placeholder-project.jpg',
-      tags: ['SEO', 'Digital Marketing'],
+      title: "SEO Campaign",
+      description: "Comprehensive SEO strategy that increased traffic by 300%",
+      image:
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop&crop=center",
+      tags: ["SEO", "Digital Marketing"],
     },
     {
-      title: 'Mobile App Design',
-      description: 'User-friendly mobile app interface design',
-      image: '/placeholder-project.jpg',
-      tags: ['UI/UX', 'Mobile Design'],
+      title: "Mobile App Design",
+      description: "User-friendly mobile app interface design",
+      image:
+        "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=300&fit=crop&crop=center",
+      tags: ["UI/UX", "Mobile Design"],
     },
     {
-      title: 'Social Media Campaign',
-      description: 'Viral social media campaign for product launch',
-      image: '/placeholder-project.jpg',
-      tags: ['Digital Marketing', 'Social Media'],
+      title: "Social Media Campaign",
+      description: "Viral social media campaign for product launch",
+      image:
+        "https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=400&h=300&fit=crop&crop=center",
+      tags: ["Digital Marketing", "Social Media"],
     },
     {
-      title: 'Corporate Website',
-      description: 'Professional corporate website with CMS integration',
-      image: '/placeholder-project.jpg',
-      tags: ['Web Development', 'CMS'],
+      title: "Corporate Website",
+      description: "Professional corporate website with CMS integration",
+      image:
+        "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=300&fit=crop&crop=center",
+      tags: ["Web Development", "CMS"],
     },
   ];
 
@@ -73,20 +80,28 @@ const ProjectsSection = () => {
               className="bg-card rounded-xl overflow-hidden border border-border hover:border-primary/50 transition-all duration-300 group"
             >
               <div className="relative h-48 bg-muted overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                  <span className="text-muted-foreground">Project Image</span>
-                </div>
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  width={400}
+                  height={300}
+                  className="w-full h-full object-cover"
+                />
                 <motion.div
                   className="absolute inset-0 bg-primary/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   whileHover={{ scale: 1.05 }}
                 >
-                  <button className="text-white font-semibold">View Project</button>
+                  <button className="text-white font-semibold">
+                    View Project
+                  </button>
                 </motion.div>
               </div>
-              
+
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                <p className="text-muted-foreground mb-4">{project.description}</p>
+                <p className="text-muted-foreground mb-4">
+                  {project.description}
+                </p>
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <span
