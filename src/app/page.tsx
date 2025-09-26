@@ -9,6 +9,7 @@ import SkillsSection from '@/components/SkillsSection';
 import ProjectsSection from '@/components/ProjectsSection';
 import ServicesSection from '@/components/ServicesSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
+import BlogSection from '@/components/BlogSection';
 import ContactSection from '@/components/ContactSection';
 
 export default function Portfolio() {
@@ -21,6 +22,7 @@ export default function Portfolio() {
       <ProjectsSection />
       <ServicesSection />
       <TestimonialsSection />
+      <BlogSection />
       <ContactSection />
 
       {/* Footer */}

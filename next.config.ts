@@ -10,10 +10,10 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
     ],
-    unoptimized: true, // Required for static export
+    unoptimized: true, // For better compatibility
   },
-  output: 'export', // Enable static export
-  trailingSlash: true, // Better for static hosting
+  // Removed static export to enable API routes
+  trailingSlash: true,
   basePath: '', // Set this to your subdirectory if needed
 };
 

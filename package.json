@@ -7,16 +7,23 @@
     "build": "next build --turbopack",
     "start": "next start -p 3006",
     "lint": "eslint",
-    "export": "next build",
-    "deploy": "npm run build && echo 'Build complete! Upload out/ folder to Hostinger'",
-    "deploy:local": "chmod +x scripts/deploy.sh && ./scripts/deploy.sh"
+    "deploy": "npm run build && echo 'Build complete! Deploy to your hosting platform'",
+    "deploy:local": "chmod +x scripts/deploy.sh && ./scripts/deploy.sh",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:init": "node scripts/init-db.js"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "framer-motion": "^12.23.12",
     "next": "15.5.2",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "prisma": "^5.7.1",
+    "@prisma/client": "^5.7.1",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "react-hook-form": "^7.48.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -24,6 +31,8 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.5",
     "eslint": "^9",
     "eslint-config-next": "15.5.2",
     "tailwindcss": "^4",

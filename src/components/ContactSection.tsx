@@ -55,28 +55,24 @@ const ContactSection = () => {
     setIsSubmitting(true);
     
     try {
-      // EmailJS Configuration - Add these to your .env.local file
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-      if (!serviceId || !templateId || !publicKey) {
-        throw new Error('EmailJS configuration missing. Please set up your environment variables.');
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitMessage("Thank you for your message! I'll get back to you soon.");
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setSubmitMessage(data.message || 'Sorry, there was an error sending your message. Please try again.');
       }
-
-      const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        message: formData.message,
-        to_email: 'Info.inzisandhu@gmail.com',
-      };
-
-      await emailjs.send(serviceId, templateId, templateParams, publicKey);
-      
-      setSubmitMessage("Thank you for your message! I'll get back to you soon.");
-      setFormData({ name: '', email: '', message: '' });
     } catch (error) {
-      console.error('Email sending failed:', error);
+      console.error('Contact form error:', error);
       setSubmitMessage('Sorry, there was an error sending your message. Please try again.');
     } finally {
       setIsSubmitting(false);
